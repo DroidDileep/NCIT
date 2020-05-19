@@ -19,7 +19,7 @@
 
 		$db=mysqli_select_db($conn,"lms") or die("db error");
 
-		$query="INSERT INTO logsheet(id,date,teacher_id,subject,topics,class_type,time,nop,nos,remarks) VALUES('','$date','$tid','$sub','$topics','$ctype','$time','$nop','$nos','$remarks')";
+		$query="INSERT INTO logsheet(id,date,teacher_id,subject,topics,class_type,time,nop,nos,remarks,status) VALUES('','$date','$tid','$sub','$topics','$ctype','$time','$nop','$nos','$remarks','not approved')";
 
 		if(mysqli_query($conn,$query)){
 			echo "log sheet updated!";

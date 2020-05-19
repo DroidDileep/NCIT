@@ -92,7 +92,7 @@
 
 	}
 	else{
-		echo "something went wrong";
+		echo "Nothing to Show here:-)";
 	}
 
 
