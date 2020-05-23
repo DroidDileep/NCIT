@@ -15,10 +15,16 @@
   </script>
   <script src="https://kit.fontawesome.com/164b99a598.js" crossorigin="anonymous"></script>
   <style type="text/css">
-  	.center{
+  	.center {
   		width: 50%;
   		margin: auto;
   		margin-top: 100px;
+  	}
+  	#loginbox{
+  		width: 50%;
+  		margin: auto;
+  		margin-top: 50px;
+
   	}
   </style>
 </head>
@@ -37,18 +43,28 @@
 				<h1 class="text-center text-dark"><span class="fas fa-user-tie"></span></h1>
 					
 					<div class="btn-group mt-3">
-						<button class="btn-light btn-outline-primary btn-lg mr-5"><a href="tindex.php">Teacher</a></button>
-						<button class="btn-light btn-outline-primary btn-lg ml-5"><a href="hindex.php">H O D</a></button>
+						<button class="btn-light btn-outline-primary btn-lg mr-5" id="tbtn">Teacher</button>
+						<button class="btn-light btn-outline-primary btn-lg ml-5" id="hbtn">H O D</button>
 					</div>
 					
 			
 			</div>
+		<div id="loginbox">
 
-			<div>
-				
-			</div>
-		
-	
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#tbtn").click(function() {
+					/* Act on the event */
+					$("#loginbox").load("tindex.php");
+				});
+				$("#hbtn").click(function() {
+					/* Act on the event */
+					$("#loginbox").load("hindex.php");
+				});
+			});
+		</script>
 
 </body>
 </html>

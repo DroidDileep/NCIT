@@ -1,5 +1,5 @@
 <?php
-#login for teachers
+#login for hods
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,10 @@
 </head>
 <body>
 	<div>
-		<form class="form-inline" action="tloginprocess.php" method="POST">
+		<form class="form-inline" action="hloginprocess.php" method="POST">
 			  <div class="input-group mb-2 mr-sm-2 ml-5">
 			    <div class="input-group-prepend">
-			      <div class="input-group-text">Teacher Id</div>
+			      <div class="input-group-text">Username</div>
 			    </div>
 			    <input type="text" class="form-control" name="userid" style="width: 7em">
 			  </div>
