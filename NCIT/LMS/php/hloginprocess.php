@@ -6,7 +6,8 @@
 		session_start();
 
 		$userid=$_POST['userid'];
-		$userpass=md5($_POST['userpass']);
+		//$userpass=md5($_POST['userpass']);
+		$userpass=$_POST['userpass'];
 
 		require_once("connect.php");
 		$query="SELECT * FROM users WHERE username='$userid' and password='$userpass'";
@@ -21,8 +22,8 @@
 				$username=$row['username'];
 				$id=$row['id'];
 
-				$_SESSION['user']=$username;
-				$_SESSION['id']=$id;
+				$_SESSION['userhod']=$username;
+				$_SESSION['idhod']=$id;
 				$_SESSION["loggedin"] = true;
 				header('location: hhome.php');
 			}

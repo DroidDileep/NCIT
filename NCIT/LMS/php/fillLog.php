@@ -25,6 +25,9 @@
 					<input type="text" class="form-control form-control-sm" size="9" name="date" value="<?php echo date('Y-m-d'); ?>" readonly>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
+					<input type="text" class="form-control form-control-sm" size="9" name="tname" value="<?php echo 'xxx'; ?>" readonly>
+				</div>
+				<div class="form-group mr-2 col-xs-2">
 					<input type="number" class="form-control form-control-sm" style="width: 7em" name="tid" placeholder="Teacher Id">
 				</div>
 				<div class="form-group mr-2 col-xs-2">

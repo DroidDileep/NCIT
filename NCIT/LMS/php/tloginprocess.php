@@ -21,8 +21,8 @@
 				$username=$row['fname'];
 				$id=$row['id'];
 
-				$_SESSION['user']=$username;
-				$_SESSION['id']=$id;
+				$_SESSION['usert']=$username;
+				$_SESSION['idt']=$id;
 				$_SESSION["loggedin"] = true;
 				header('location: thome.php');
 			}

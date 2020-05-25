@@ -1,6 +1,9 @@
-<?php #admin page to view logsheeet ?>
+<?php #admin page to view logsheeet 
 
+	session_start();
+	if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSION['idhod'])){
 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +53,9 @@
 	</div>
 </body>
 </html>
+
 	<?php
+	
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 		$flag=$_POST['submit'];
@@ -59,75 +64,82 @@
 		if($flag=="List Logs"){
 			#grab a specific teacher's log
 			
-
+			$tname=$_POST['tname'];
 
 	
-	#get logs that are not approved
-	$query="SELECT * FROM logsheet where teacher_id=301 and status='not approved'";
+			#get logs that are not approved
+			$query="SELECT * FROM logsheet where tname='$tname' and status='not approved'";
 
-	#get logs that are approved
-	$query2="SELECT * FROM logsheet where teacher_id=301 and status='approved'";
+			#get logs that are approved
+			$query2="SELECT * FROM logsheet where tname='$tname' and status='approved'";
 	
 
-	$result=mysqli_query($conn,$query);
-	if($result){
+			$result=mysqli_query($conn,$query);
+			$numrows=mysqli_num_rows($result);
+			if($numrows>=1){
 ?>		
-		<div id="lognotapprovedbox" class="m-4" style="line-height: 1">
-					<table class="table table-dark table-bordered table-striped w-auto">
-						<caption class="text-danger ">Logs Not Approved</caption>
-						<tr>
-							<th>Date</th>
-							<th>Subjects</th>
-							<th>Topics</th>
-							<th>Class Type</th>
-							<th>Time</th>
-							<th>NOP</th>
-							<th>NOS</th>
-							<th>Remarks</th>
-							<th>Status</th>
-							<th>Actions</th>
+				<div id="lognotapprovedbox" class="m-4" style="line-height: 1">
+							<table class="table table-dark table-bordered table-striped w-auto">
+								<caption class="text-danger ">Logs Not Approved</caption>
+								<tr>
+									<th>Date</th>
+									<th>Name</th>
+									<th>Subjects</th>
+									<th>Topics</th>
+									<th>Class Type</th>
+									<th>Time</th>
+									<th>NOP</th>
+									<th>NOS</th>
+									<th>Remarks</th>
+									<th>Status</th>
+									<th>Actions</th>
 
-						</tr>
+								</tr>
 <?php				
-				while($row=mysqli_fetch_assoc($result)){
+								while($row=mysqli_fetch_assoc($result)){
 ?>
-					<tr>
-						<form method="POST" action="approvelog.php">
-						<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
-						<td><?php echo $row['date']; ?></td>
-						<td><?php echo $row['subject']; ?></td>
-						<td><?php echo $row['topics']; ?></td>
-						<td><?php echo $row['class_type']; ?></td>
-						<td><?php echo $row['time']; ?></td>
-						<td><?php echo $row['nop']; ?></td>
-						<td><?php echo $row['nos']; ?></td>
-						<td><?php echo $row['remarks']; ?></td>
-						<td><?php echo $row['status']; ?></td>
-						<td ><button class="btn-primary">Approve Log</button></td>
-						</form>
-					</tr>	
+									<tr>
+										<form method="POST" action="approvelog.php">
+										<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
+										<td><?php echo $row['date']; ?></td>
+										<td><?php echo $row['tname']; ?></td>
+										<td><?php echo $row['subject']; ?></td>
+										<td><?php echo $row['topics']; ?></td>
+										<td><?php echo $row['class_type']; ?></td>
+										<td><?php echo $row['time']; ?></td>
+										<td><?php echo $row['nop']; ?></td>
+										<td><?php echo $row['nos']; ?></td>
+										<td><?php echo $row['remarks']; ?></td>
+										<td><?php echo $row['status']; ?></td>
+										<td ><button class="btn-primary">Approve Log</button></td>
+										</form>
+									</tr>	
 <?php 									
-				}
+								}
 ?>
-					</table>
+							</table>
 
 				</div> 
 <?php
-		}
-		else{
-			echo "no data to show";
-		}
+			}
+			else{
+?>
+			<div class="alert-info">No Data to Show!</div>
+<?php
+			}
 
-		#approved logs
-		$result=mysqli_query($conn,$query2);
-		if($result){
+			#approved logs
+			$result=mysqli_query($conn,$query2);
+			$numrows=mysqli_num_rows($result);
+			if($numrows>=1){
 	
 ?>		
-		<div id="displaybox" class="m-4" style="line-height: 1">
-					<table class="table table-dark table-bordered table-striped w-auto">
-						<caption class="text-success">Approved Logs</caption>
+			<div id="displaybox" class="m-4" style="line-height: 1">
+				<table class="table table-dark table-bordered table-striped w-auto">
+					<caption class="text-success">Approved Logs</caption>
 						<tr>
 							<th>Date</th>
+							<th>Name</th>
 							<th>Subjects</th>
 							<th>Topics</th>
 							<th>Class Type</th>
@@ -140,10 +152,11 @@
 
 						</tr>
 <?php				
-				while($row=mysqli_fetch_assoc($result)){
+					while($row=mysqli_fetch_assoc($result)){
 ?>
 					<tr>
 						<td><?php echo $row['date']; ?></td>
+						<td><?php echo $row['tname']; ?></td>
 						<td><?php echo $row['subject']; ?></td>
 						<td><?php echo $row['topics']; ?></td>
 						<td><?php echo $row['class_type']; ?></td>
@@ -155,42 +168,38 @@
 						
 					</tr>	
 <?php 									
-				}
+					}
 ?>
-					</table>
+				</table>
 
-				</div> 
+			</div> 
 <?php
-		}
-		else{
-			echo "no data to show";
-		}
+			}
+			else{
+?>
+				<div class="alert-info">No Data to Show!</div>
+<?php
+			}
 	}
+	else{
 
+		#grab all logs
+		#get ALL logs that are not approved
+		$query="SELECT * FROM logsheet where status='not approved'";
 
-		else{
-
-
-			#grab all logs
-
-
-
-	
-	#get ALL logs that are not approved
-	$query="SELECT * FROM logsheet where status='not approved'";
-
-	#get ALL logs that are approved
-	$query2="SELECT * FROM logsheet where status='approved'";
-	
-
-	$result=mysqli_query($conn,$query);
-	if($result){
+		#get ALL logs that are approved
+		$query2="SELECT * FROM logsheet where status='approved'";
+		
+		$result=mysqli_query($conn,$query);
+		$numrows=mysqli_num_rows($result);
+		if($numrows>=1){
 ?>		
-		<div id="lognotapprovedbox" class="m-4" style="line-height: 1">
-					<table class="table table-dark table-bordered table-striped w-auto">
-						<caption class="text-danger ">Logs Not Approved</caption>
+			<div id="lognotapprovedbox" class="m-4" style="line-height: 1">
+				<table class="table table-dark table-bordered table-striped w-auto">
+					<caption class="text-danger ">Logs Not Approved</caption>
 						<tr>
 							<th>Date</th>
+							<th>Name</th>
 							<th>Subjects</th>
 							<th>Topics</th>
 							<th>Class Type</th>
@@ -203,45 +212,50 @@
 
 						</tr>
 <?php				
-				while($row=mysqli_fetch_assoc($result)){
+						while($row=mysqli_fetch_assoc($result)){
 ?>
-					<tr>
-						<form method="POST" action="approvelog.php">
-						<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
-						<td><?php echo $row['date']; ?></td>
-						<td><?php echo $row['subject']; ?></td>
-						<td><?php echo $row['topics']; ?></td>
-						<td><?php echo $row['class_type']; ?></td>
-						<td><?php echo $row['time']; ?></td>
-						<td><?php echo $row['nop']; ?></td>
-						<td><?php echo $row['nos']; ?></td>
-						<td><?php echo $row['remarks']; ?></td>
-						<td><?php echo $row['status']; ?></td>
-						<td ><button class="btn-primary">Approve Log</button></td>
-						</form>
-					</tr>	
+						<tr>
+							<form method="POST" action="approvelog.php">
+							<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
+							<td><?php echo $row['date']; ?></td>
+							<td><?php echo $row['tname']; ?></td>
+							<td><?php echo $row['subject']; ?></td>
+							<td><?php echo $row['topics']; ?></td>
+							<td><?php echo $row['class_type']; ?></td>
+							<td><?php echo $row['time']; ?></td>
+							<td><?php echo $row['nop']; ?></td>
+							<td><?php echo $row['nos']; ?></td>
+							<td><?php echo $row['remarks']; ?></td>
+							<td><?php echo $row['status']; ?></td>
+							<td ><button class="btn-primary">Approve Log</button></td>
+							</form>
+						</tr>	
 <?php 									
-				}
+						}
 ?>
-					</table>
+				</table>
 
-				</div> 
+			</div> 
 <?php
 		}
 		else{
-			echo "no data to show";
+?>
+			<div class="alert-info">No Data to Show!</div>
+<?php			
 		}
 
 		#approved logs
 		$result=mysqli_query($conn,$query2);
-		if($result){
+		$numrows=mysqli_num_rows($result);
+		if($numrows>=1){
 	
 ?>		
-		<div id="displaybox" class="m-4" style="line-height: 1">
-					<table class="table table-dark table-bordered table-striped w-auto">
-						<caption class="text-success">Approved Logs</caption>
+			<div id="displaybox" class="m-4" style="line-height: 1">
+				<table class="table table-dark table-bordered table-striped w-auto">
+					<caption class="text-success">Approved Logs</caption>
 						<tr>
 							<th>Date</th>
+							<th>Name</th>
 							<th>Subjects</th>
 							<th>Topics</th>
 							<th>Class Type</th>
@@ -254,40 +268,49 @@
 
 						</tr>
 <?php				
-				while($row=mysqli_fetch_assoc($result)){
+						while($row=mysqli_fetch_assoc($result)){
 ?>
-					<tr>
-						<td><?php echo $row['date']; ?></td>
-						<td><?php echo $row['subject']; ?></td>
-						<td><?php echo $row['topics']; ?></td>
-						<td><?php echo $row['class_type']; ?></td>
-						<td><?php echo $row['time']; ?></td>
-						<td><?php echo $row['nop']; ?></td>
-						<td><?php echo $row['nos']; ?></td>
-						<td><?php echo $row['remarks']; ?></td>
-						<td><?php echo $row['status']; ?></td>
-						
-					</tr>	
+						<tr>
+							<td><?php echo $row['date']; ?></td>
+							<td><?php echo $row['tname']; ?></td>
+							<td><?php echo $row['subject']; ?></td>
+							<td><?php echo $row['topics']; ?></td>
+							<td><?php echo $row['class_type']; ?></td>
+							<td><?php echo $row['time']; ?></td>
+							<td><?php echo $row['nop']; ?></td>
+							<td><?php echo $row['nos']; ?></td>
+							<td><?php echo $row['remarks']; ?></td>
+							<td><?php echo $row['status']; ?></td>
+							
+						</tr>	
 <?php 									
-				}
+						}
 ?>
-					</table>
+				</table>
 
-				</div> 
+			</div> 
 <?php
 		}
 		else{
-			echo "no data to show";
+?>
+			<div class="alert-info">No Data to Show!</div>
+<?php
 		}
 
 
-		}
+	}
 
 	}
 	else{
-		echo "Nothing to Show here:-)";
+?>		
+		<div class="alert-info">Nothing to show here!</div>
+<?php
 	}
-
+}
+else{
+	#authentication error!
+	header('location: index.php');
+}
 
 ?>
 

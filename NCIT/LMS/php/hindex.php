@@ -20,7 +20,7 @@
 			    <div class="input-group-prepend">
 			      <div class="input-group-text">Password</div>
 			    </div>
-			    <input type="text" class="form-control" name="userpass" style="width: 7em">
+			    <input type="password" class="form-control" name="userpass" style="width: 7em">
 			  </div>
 			  <button type="submit" class="btn btn-primary mb-2">Log In</button>
 			</form>

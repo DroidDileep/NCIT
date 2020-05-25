@@ -1,3 +1,10 @@
+<?php
+	
+	session_start();
+	if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSION['idhod']))
+	{
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,3 +132,12 @@
 
 </body>
 </html>
+
+<?php
+	}	
+	else{
+	#authentication error!
+	header('location:index.php');	
+}
+
+?>
