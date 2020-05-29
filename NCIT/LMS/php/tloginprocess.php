@@ -1,5 +1,6 @@
 <?php
 #processing teacher login
+#using session to store name and id and loggedin status
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -8,6 +9,7 @@
 		$userid=$_POST['userid'];
 		$userpass=md5($_POST['userpass']);
 
+		#logging in based on teaxcher id and password and creatinf session variables to store name,id and loggedin status
 		require_once("connect.php");
 		$query="SELECT * FROM teachers WHERE id='$userid' and password='$userpass'";
 		$result=mysqli_query($conn,$query);

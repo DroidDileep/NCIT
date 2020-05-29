@@ -8,6 +8,7 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
+	<!-- teacher login page that will be submitted to tloginprocess.php-->
 	<div>
 		<form class="form-inline" action="tloginprocess.php" method="POST">
 			  <div class="input-group mb-2 mr-sm-2 ml-5">

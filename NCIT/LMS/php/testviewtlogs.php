@@ -7,9 +7,6 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
-  <script type="text/javascript">
-  	
-  </script>
 </head>
 <body>
 
@@ -18,7 +15,7 @@
 <?php
 
 	require_once("connect.php");
-	$query="SELECT * FROM logsheet where teacher_id=301 and status='not approved' ";
+	$query="SELECT * FROM logsheet where teacher_id=201 and status='not approved' ";
 	$result=mysqli_query($conn,$query);
 	if($result){
 ?>		
@@ -42,7 +39,7 @@
 					$formid=$row['id'];
 ?>
 					<tr >
-						<form id="<?php echo $row['id'] ?>" method="post" onsubmit="update(this.id)">
+						<form id="<?php echo $row['id'] ?>" method="post" onsubmit="update(this.id,event)">
 						<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden"
 						>	
 						<td><?php echo $row['date']; ?></td>
@@ -71,41 +68,13 @@
 
 ?>
 <script type="text/javascript">
-	/*
-	$(document).ready(function(){
-				alert("<?php echo $formid ?>");
-				/*
-				$.ajax({
-					url:'testupdatelog.php',
-					type:'POST',
-					data:{'tdata':tid},
-					//dataType:'text',
-					success: function () {
-              			alert('log updated');
-           			 }
-				});
-		*/		
-	 //process each row update of above tables using the form id			
-	//$(".<?php echo $formid ?>").submit(function(event){
+	
 
-		function update(formid){
-    // Prevent default posting of form - put here to work in case of errors
-    //event.preventDefault();
-    
-    // Abort any pending request
-    
-    //if (request) {
-      //  request.abort();
-    //}
+		function update(formid, event){
+   
     var formid="#"+formid;
-    alert(formid);
-    // setup some local variables
-    //var $form = $(this);
+    
     var serializedData = $(formid).serialize();
-
-   // $.post('testajax2.php', serializedData, function(response) {
-    // Log the response to the console
-    //console.log("Response: "+response);
 
 
     $.ajax({
@@ -117,57 +86,14 @@
               			alert('log updated');
            			 }
 				});
+    event.preventDefault();
+    /*reload pg*/
 
 }
-	/*
-    // Let's select and cache all the fields
-    var $inputs = $form.find("input, select, button, textarea");
+	
 
-    // Serialize the data in the form
-    var serializedData = $form.serialize();
-
-    // Let's disable the inputs for the duration of the Ajax request.
-    // Note: we disable elements AFTER the form data has been serialized.
-    // Disabled form elements will not be serialized.
-    $inputs.prop("disabled", true);
-
-    // Fire off the request to /form.php
-    request = $.ajax({
-        url: "testajax2.php",
-        type: "post",
-        data: serializedData
-    });
-
-    // Callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR){
-        // Log a message to the console
-       // console.log("Hooray, it worked!");
-       alert("Log Updated Successfully!");
-    });
-
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown){
-        // Log the error to the console
-        /*
-        console.error(
-            "The following error occurred: "+
-            textStatus, errorThrown
-        );
-      
-    });
-
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function () {
-        // Reenable the inputs
-        $inputs.prop("disabled", false);
-    });
-
-});
 
 			
-		});	
-*/
 </script>
 
 </body>

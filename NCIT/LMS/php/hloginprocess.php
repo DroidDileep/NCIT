@@ -1,5 +1,6 @@
 <?php
-#processing teacher login
+#processing teacher login credentials
+#using session to store name and id and loggedin status
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -10,6 +11,8 @@
 		$userpass=$_POST['userpass'];
 
 		require_once("connect.php");
+
+		#authentication based on username and password for hod
 		$query="SELECT * FROM users WHERE username='$userid' and password='$userpass'";
 		$result=mysqli_query($conn,$query);
 		if($result){
@@ -22,6 +25,7 @@
 				$username=$row['username'];
 				$id=$row['id'];
 
+				#creating three session variables name,id and loggedin status
 				$_SESSION['userhod']=$username;
 				$_SESSION['idhod']=$id;
 				$_SESSION["loggedin"] = true;
@@ -38,6 +42,7 @@
 	}
 	else{
 		header('location: index.php');
+		#if any error redirecting to index page
 	}	
 
 ?>

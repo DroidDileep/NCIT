@@ -1,4 +1,4 @@
-<?php #admin page to view logsheeet of all teachers or individual teachers ; view approved and not approved logs seperatly 
+<?php #admin page to delete logsheeet of all teachers or individual teachers ; delete approved and not approved logs seperatly 
 
 	session_start();
 	if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSION['idhod'])){
@@ -93,7 +93,6 @@
 									<th>NOS</th>
 									<th>Remarks</th>
 									<th>Status</th>
-									<th>Payable</th>
 									<th>Actions</th>
 
 								</tr>
@@ -101,7 +100,7 @@
 								while($row=mysqli_fetch_assoc($result)){
 ?>
 									<tr>
-										<form method="POST" action="approvelog.php">
+										<form method="POST" action="processlogdelete.php">
 										<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
 										<td><?php echo $row['date']; ?></td>
 										<td><?php echo $row['tname']; ?></td>
@@ -113,16 +112,7 @@
 										<td><?php echo $row['nos']; ?></td>
 										<td><?php echo $row['remarks']; ?></td>
 										<td><?php echo $row['status']; ?></td>
-										<td><div class="form-check form-check-inline">
-										  <input class="form-check-input" type="radio" name="pay" id="r1" value="true">
-										  <label class="form-check-label" for="r1">Yes</label>
-										</div>
-										<div class="form-check form-check-inline">
-										  <input class="form-check-input" type="radio" name="pay" id="r2" value="false">
-										  <label class="form-check-label" for="r2">No</label>
-										</div>
-										</td>
-										<td ><button class="btn-primary">Approve Log</button></td>
+										<td ><button class="btn-primary">Delete Log</button></td>
 										</form>
 									</tr>	
 <?php 									
@@ -160,6 +150,7 @@
 							<th>Remarks</th>
 							<th>Payable</th>
 							<th>Status</th>
+							<th>Actions</th>
 							
 
 						</tr>
@@ -167,6 +158,9 @@
 					while($row=mysqli_fetch_assoc($result)){
 ?>
 					<tr>
+						<form method="POST" action="processlogdelete.php">
+						<input type="number" name="rowid" value="<?php echo $row['id'] ?>" 
+						style="visibility: hidden" readonly>
 						<td><?php echo $row['date']; ?></td>
 						<td><?php echo $row['tname']; ?></td>
 						<td><?php echo $row['subject']; ?></td>
@@ -178,6 +172,7 @@
 						<td><?php echo $row['remarks']; ?></td>
 						<td><?php echo $row['payable']; ?></td>
 						<td><?php echo $row['status']; ?></td>
+						<td ><button class="btn-primary">Delete Log</button></td>
 						
 					</tr>	
 <?php 									
@@ -228,7 +223,7 @@
 						while($row=mysqli_fetch_assoc($result)){
 ?>
 						<tr>
-							<form method="POST" action="approvelog.php">
+							<form method="POST" action="processlogdelete.php">
 							<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
 							<td><?php echo $row['date']; ?></td>
 							<td><?php echo $row['tname']; ?></td>
@@ -240,17 +235,7 @@
 							<td><?php echo $row['nos']; ?></td>
 							<td><?php echo $row['remarks']; ?></td>
 							<td><?php echo $row['status']; ?></td>
-							<td>
-								<div class="form-check form-check-inline">
-										  <input class="form-check-input" type="radio" name="pay" id="r1" value="true">
-										  <label class="form-check-label" for="r1">Yes</label>
-										</div>
-										<div class="form-check form-check-inline">
-										  <input class="form-check-input" type="radio" name="pay" id="r2" value="false">
-										  <label class="form-check-label" for="r2">No</label>
-								</div>
-							</td>
-							<td ><button class="btn-primary">Approve Log</button></td>
+							<td ><button class="btn-primary">Delete Log</button></td>
 							</form>
 						</tr>	
 <?php 									
@@ -288,6 +273,7 @@
 							<th>Remarks</th>
 							<th>Payable</th>
 							<th>Status</th>
+							<th>Actions</th>
 							
 
 						</tr>
@@ -295,6 +281,8 @@
 						while($row=mysqli_fetch_assoc($result)){
 ?>
 						<tr>
+							<form method="POST" action="processlogdelete.php">
+							<input type="number" name="rowid" value="<?php echo $row['id'] ?>" style="visibility: hidden" readonly>	
 							<td><?php echo $row['date']; ?></td>
 							<td><?php echo $row['tname']; ?></td>
 							<td><?php echo $row['subject']; ?></td>
@@ -306,6 +294,8 @@
 							<td><?php echo $row['remarks']; ?></td>
 							<td><?php echo $row['payable']; ?></td>
 							<td><?php echo $row['status']; ?></td>
+							<td ><button class="btn-primary">Delete Log</button></td>
+							</form>
 							
 						</tr>	
 <?php 									

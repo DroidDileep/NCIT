@@ -29,7 +29,7 @@
 
 		if(mysqli_query($conn,$query)){
 			echo "log sheet updated!";
-			header('location:testviewtlogs.php');
+			//header('location:testviewtlogs.php');
 		}
 		else{
 			echo "error in updating log sheet!".mysqli_error($conn);

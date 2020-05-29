@@ -1,5 +1,5 @@
 <?php
-#index page for login
+#index page for login: both teacher and HOD/Admin
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,6 +30,7 @@
 </head>
 <body>
 	
+	<!-- header with logo and app name-->
 		<div class="navbar">
 			<nav class="navbar navbar-dark bg-primary fixed-top">
   				<a class="navbar-brand" href="#">
@@ -39,6 +40,7 @@
 			</nav>
 		</div>
 		
+		<!-- buttons that can toggle login page for teacher and HOD -->
 			<div class="center text-center">
 				<h1 class="text-center text-dark"><span class="fas fa-user-tie"></span></h1>
 					
@@ -49,10 +51,13 @@
 					
 			
 			</div>
+
+		<!-- div to display the corresponding loginpage for admin and teacher-->	
 		<div id="loginbox">
 
 		</div>
 
+		<!-- jquery code to facilitate button toggling-->
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("#tbtn").click(function() {

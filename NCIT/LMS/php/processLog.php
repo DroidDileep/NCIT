@@ -2,7 +2,7 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-		#collecting form data
+		#collecting form data and processing the logs entered by teacher
 
 		$date=$_POST['date'];
 		$tid=$_POST['tid'];

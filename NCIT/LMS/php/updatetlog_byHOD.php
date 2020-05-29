@@ -1,6 +1,6 @@
 
 <?php
-	#processing updated log information; updated by individual teacher
+	#updating a teachers log by HOD
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 		#collecting form data
@@ -12,6 +12,7 @@
 		$time=$_POST['time'];
 		$nop=$_POST['nop'];
 		$nos=$_POST['nos'];
+		$payable=$_POST['pay'];
 		$remarks=$_POST['remarks'];
 
 		#connection to localhost and db selection
@@ -24,12 +25,13 @@
 				time='$time',
 				nop='$nop',
 				nos='$nos',
+				payable='$payable',
 				remarks='$remarks'
 				WHERE id=$rowid";
 
 		if(mysqli_query($conn,$query)){
 			echo "log sheet updated!";
-			header('location:viewtlogs.php');
+			header('location: edittlogs.php');
 		}
 		else{
 			echo "error in updating log sheet!".mysqli_error($conn);
