@@ -50,7 +50,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 	require_once("connect.php");
 
 	#get logs that are not approved and approved based on teachers name
-	$query="SELECT * FROM logsheet where tname='$name'";
+	$query="SELECT * FROM logsheet where tname='$name' and status!='archieved'";
 
 	
 	

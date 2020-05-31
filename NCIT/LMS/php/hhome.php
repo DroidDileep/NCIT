@@ -53,7 +53,8 @@
 							<div class="btn-group btn-group-vertical">
 							<button type="button" class="btn btn-outline-primary c" id="viewlogs">View Logs</button>
 							<button type="button" class="btn btn-outline-primary c" id="editlogs">Edit Logs</button>
-							<button type="button" class="btn btn-outline-primary c" id="deletelogs">Delete Logs</button>
+							<button type="button" class="btn btn-outline-primary c" id="deletelogs">Archieve Logs</button>
+							<button type="button" class="btn btn-outline-primary c" id="sortlogs">Sort Logs</button>
 							<button type="button" class="btn btn-outline-primary" id="viewt">View Teachers</button>
 							<button type="button" class="btn btn-outline-primary" id="addt">Add Teachers</button> 	
 							<button type="button" class="btn btn-outline-primary" id="asub">Assign Subjects</button>
@@ -72,7 +73,7 @@
 						$("#viewlogs").click(function() {
 							/* Act on the event, view logs */
 							//$("#rightcol").load("viewLog.php");
-							$("#dbox").attr('src', 'viewLog.php');
+							$("#dbox").attr('src', 'viewAllLogs.php');
 						});
 						$("#editlogs").click(function() {
 							/* Act on the event, edit logs */
@@ -82,7 +83,12 @@
 						$("#deletelogs").click(function() {
 							/* Act on the event, edit logs */
 							//$("#rightcol").load("addteacher.php");
-							$("#dbox").attr('src', 'deleteLog.php');
+							$("#dbox").attr('src', 'ArchieveLog.php');
+						});
+						$("#sortlogs").click(function() {
+							/* Act on the event, edit logs */
+							//$("#rightcol").load("addteacher.php");
+							$("#dbox").attr('src', 'sortLogs.php');
 						});
 						$("#viewt").click(function() {
 							/* Act on the event, view teacher */

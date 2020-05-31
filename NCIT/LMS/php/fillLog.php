@@ -36,7 +36,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 			<!-- form to collect log details of a particular day ;date,teacher id and teacher name obtained via session -->
 			<form class="form-inline" id="logform" method="POST">
 				<div class="form-group mr-2 col-xs-2">
-					<input type="text" class="form-control form-control-sm" size="9" name="date" value="<?php echo date('Y-m-d'); ?>" readonly>
+					<input type="date" class="form-control form-control-sm" size="9" name="date" >
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<input type="text" class="form-control form-control-sm" size="9" name="tname" value="<?php echo $tname; ?>" readonly>

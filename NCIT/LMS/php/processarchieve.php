@@ -1,5 +1,5 @@
 <?php
-#process log deletion
+#add logs to archieve
 	session_start();
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -7,12 +7,10 @@
 
 		require_once("connect.php");
 
-		$query="DELETE FROM logsheet WHERE id=$rowid";
+		$query="UPDATE logsheet SET status='archieved' WHERE id='$rowid'";
 
 		if(mysqli_query($conn,$query)){
-				header('location:deleteownlog.php');
-			
-				
+				header('location:ArchieveLog.php');
 		}
 		else{
 			echo "something went wrong with approval";
@@ -23,8 +21,4 @@
 		echo "You shouldn't be here!";
 		header('location: index.php');
 	}	
-
-
-
-
 ?>

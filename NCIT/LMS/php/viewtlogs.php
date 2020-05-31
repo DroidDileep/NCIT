@@ -93,7 +93,6 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 							<th>NOP</th>
 							<th>NOS</th>
 							<th>Remarks</th>
-							<th>Payable</th>
 							<th>Status</th>
 							
 
@@ -110,7 +109,6 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 						<td><?php echo $row['nop']; ?></td>
 						<td><?php echo $row['nos']; ?></td>
 						<td><?php echo $row['remarks']; ?></td>
-						<td><?php echo $row['payable']; ?></td>
 						<td><?php echo $row['status']; ?></td>
 						
 					</tr>	

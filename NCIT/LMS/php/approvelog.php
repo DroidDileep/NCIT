@@ -10,7 +10,7 @@
 		$query="UPDATE logsheet SET status='approved',payable='$pay' WHERE id=$rowid";
 
 		if(mysqli_query($conn,$query)){
-			header('location:viewLog.php');
+			header('location:viewAllLogs.php');
 		}
 		else{
 			echo "something went wrong with approval";
