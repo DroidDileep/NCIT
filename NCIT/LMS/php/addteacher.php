@@ -14,8 +14,12 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<style type="text/css">
 		#teacherslistbox{
-			margin-left: 100px;
-			border-left: 1px solid blue;
+			margin-left: 10px;
+			
+		}
+		#teacherform{
+			border-right: 1px solid blue;
+			padding-right: 10px;
 		}
 	</style>
 	
@@ -25,7 +29,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-5">
 				<div id="teacherform">
 					<h3 class="text-success text-center">Add a new Teacher</h3>
 					<form id="addt" method="POST" >
@@ -99,7 +103,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-8">
+			<div class="col-7">
 				<div id="teacherslistbox">
 					
 				</div>
@@ -131,7 +135,7 @@
 			});
 			setInterval(function(){
 			$("#teacherslistbox").load('teacherlist.php')
-			}, 2000);
+			}, 1000);
 		});	
 		
 	</script>

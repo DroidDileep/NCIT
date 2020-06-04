@@ -55,8 +55,8 @@
 							<button type="button" class="btn btn-outline-primary c" id="editlogs">Edit Logs</button>
 							<button type="button" class="btn btn-outline-primary c" id="deletelogs">Archieve Logs</button>
 							<button type="button" class="btn btn-outline-primary c" id="sortlogs">Sort Logs</button>
-							<button type="button" class="btn btn-outline-primary" id="viewt">View Teachers</button>
-							<button type="button" class="btn btn-outline-primary" id="addt">Add Teachers</button> 	
+							<button type="button" class="btn btn-outline-primary" id="addt">Add Teachers</button>
+							<button type="button" class="btn btn-outline-primary" id="removet">Remove Teachers</button> 	
 							<button type="button" class="btn btn-outline-primary" id="asub">Assign Subjects</button>
 							</div>
 						</div>
@@ -90,10 +90,10 @@
 							//$("#rightcol").load("addteacher.php");
 							$("#dbox").attr('src', 'sortLogs.php');
 						});
-						$("#viewt").click(function() {
+						$("#removet").click(function() {
 							/* Act on the event, view teacher */
 							//$("#rightcol").load("addteacher.php");
-							$("#dbox").attr('src', 'viewteachers.php');
+							$("#dbox").attr('src', 'removeteacher.php');
 						});
 						$("#addt").click(function() {
 							/* Act on the event, add teacher */

@@ -1,10 +1,10 @@
 <?php
-#teacher list
-	session_start();
+#display teacher-subject list
+session_start();
 if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSION['idhod'])){
 
 	require_once('connect.php');
-	$query="SELECT id,fname,lname FROM teachers";
+	$query="SELECT * FROM subjects";
 	$result=mysqli_query($conn,$query);
 	if($result){
 ?>
@@ -14,19 +14,21 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 	<title></title>
 	<style type="text/css">
 		th,td{
-			width: 20%;
-			line-height: 40px;
+			width:30%;
+			 
 		}
 	</style>
 </head>
 <body>
-	<div class="col-8" id="listbox">
-		<h3 class="text-primary">Teachers</h3>
-		<table class="table-striped table-success table-bordered table-responsive-lg">
+	<div class="" id="subbox">
+		<h3 class="text-primary">Subjects Assigned</h3>
+		<table class="table-striped table-success table-bordered ">
 			<tr>
 					<th style="width:5%">S.N</th>
 					<th>Name</th>
-					<th>Id</th>
+					<th>Subject</th>
+					<th>Semester</th>
+					<th>Faculty</th>
 				</tr>
 <?php
 		$i=1;
@@ -34,9 +36,11 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 ?>	
 				
 				<tr>
-					<td style="width:5%"><?php echo $i; ?></td>
-					<td><?php echo $row['fname']; ?></td>
-					<td><?php echo $row['id']; ?></td>
+					<td style="width:5%"><?php echo $i ?></td>
+					<td><?php echo $row['tname']; ?></td>
+					<td><?php echo $row['subject']; ?></td>
+					<td><?php echo $row['semester']; ?></td>
+					<td><?php echo $row['faculty']; ?></td>
 				</tr>
 <?php 
 		$i++;
@@ -55,5 +59,4 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 }else{
 	echo "auth error!";
 }	
-?>		
-	
+?>
