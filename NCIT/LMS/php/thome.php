@@ -27,6 +27,11 @@
 					border-right: 2px solid blue;
 					height:500px;
 				}
+				h4 a{
+					color: red;
+					padding-left: 6px;
+					font-size: 14px;
+				}
 					 	
 			</style>
 
@@ -39,7 +44,7 @@
 		   				Log Management System
 		  				</a>
 		  				<div class="navbar-nav ml-auto">
-		            		<h4 class="text-dark">Welcome <?php echo $user?></h4>
+		            		<h4 class="text-dark">Welcome <?php echo $user?><a href="logout.php">log out</a></h4>
 		        		</div>
 		  				
 					</nav>

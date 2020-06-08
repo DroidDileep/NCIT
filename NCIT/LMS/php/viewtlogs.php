@@ -85,7 +85,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 					<table class="table table-dark table-bordered table-striped w-auto">
 						<caption class="text-success">Approved Logs</caption>
 						<tr>
-							<th>Date</th>
+							<th>Class taken</th>
 							<th>Subjects</th>
 							<th>Topics</th>
 							<th>Class Type</th>

@@ -1,5 +1,19 @@
 <?php
 #index page for login: both teacher and HOD/Admin
+if(isset($_SESSION['loggedin'])){
+
+	if(isset($_SESSION['usert'])){
+		header('location:thome.php');
+	}
+	else if(isset($_SESSION['userhod'])){
+		header('location:hhome.php');
+	}
+	else{
+		header('location:logout.php');
+	}
+
+}
+else{
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,3 +87,6 @@
 
 </body>
 </html>
+<?php
+}
+?>

@@ -15,7 +15,7 @@
 	<style type="text/css">
 		.search{
 			margin-top: 30px;
-			margin-left: 50px;
+			margin-left: 10px;
 		}
 		caption{
 			caption-side: top;
@@ -46,7 +46,17 @@
 						<option value="all">All</option>
 					</select>
 				</div>
-				<div class="input-group mr-2 col-sm-1">
+			
+				<div class="form-group ml-1 mr-2">
+					<input type="date" class="form-control-sm" id="fromdate" name="fromdate">
+				</div>
+				<div class="form-group">
+					<span>To</span>
+				</div>
+				<div class="form-group ml-2 mr-1">
+					<input type="date" class="form-control-sm" id="todate" name="todate">
+				</div>
+				<div class="input-group mr-1 col-sm-1">
 					<input type="submit" class="form-control form-control-sm btn-primary" name="submit" value="Search">
 				</div>
 
@@ -61,20 +71,36 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-		$name=$_POST['tname'];
+		
 		$type=$_POST['type'];
+		$from=$_POST['fromdate'];
+		$to=$_POST['todate'];
 
 		require_once("connect.php");
 
-		if($type=='all'){
-			#all categories
-			$query="SELECT * FROM logsheet WHERE tname='$name'";
+		#details of single teacher based on name
+		if(!empty($_POST['tname'])){
+			$name=$_POST['tname'];
+			if($type=='all'){
+				#all categories
+				$query="SELECT * FROM logsheet WHERE tname='$name' and date between '$from' AND '$to' ORDER BY date DESC";
+			}
+			else{
+				#other specific categories
+				$query="SELECT * FROM logsheet WHERE tname='$name' and status='$type'  and date between '$from' AND '$to' ORDER BY date DESC";
+			}
 		}
+		#or details of all teacher
 		else{
-			#other specific categories
-			$query="SELECT * FROM logsheet WHERE tname='$name' and status='$type' ";
-		}
-
+			if($type=='all'){
+				#all categories
+				$query="SELECT * FROM logsheet WHERE date between '$from' AND '$to' ORDER BY date DESC";
+			}
+			else{
+				#other specific categories
+				$query="SELECT * FROM logsheet WHERE status='$type' and date between '$from' AND '$to' ORDER BY date DESC";
+			}
+		}	
 		$result=mysqli_query($conn,$query);
 		$numrows=mysqli_num_rows($result);
 		if($numrows>=1){
@@ -83,7 +109,7 @@
 							<table class="table table-dark table-bordered table-striped w-auto">
 								<caption class="text-danger ">Logs-<?php echo $type ?></caption>
 								<tr>
-									<th>Date</th>
+									<th>Class taken</th>
 									<th>Name</th>
 									<th>Subjects</th>
 									<th>Topics</th>

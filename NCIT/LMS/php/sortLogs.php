@@ -1,5 +1,8 @@
 <?php
-#sort logs
+#sort logs of all teacher or a single teacher ..
+
+	session_start();
+	if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSION['idhod'])){
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +27,7 @@
   					</div>
   					<input type="text" class="form-control form-control-sm" placeholder="Teacher Name" name="tname">
   					</div>
-  				</div>
+  		</div>
 			
 		<div class="form-group ml-3 mr-3">
 			<label for="fromdate">From:</label>
@@ -47,11 +50,17 @@ require_once("connect.php");
 
 $from=$_POST['fromdate'];
 $to=$_POST['todate'];
-$name=$_POST['tname'];
+if(!empty($_POST['tname'])){
 
+	#if teacher name given then fetch specific teachers logs
 
-$query="SELECT * FROM logsheet WHERE tname='$name' and date between '$from' AND '$to' ORDER BY date DESC";
-
+	$name=$_POST['tname'];
+	$query="SELECT * FROM logsheet WHERE tname='$name' and date between '$from' AND '$to' ORDER BY date DESC";
+}
+else{
+	#select all logs
+	$query="SELECT * FROM logsheet WHERE date between '$from' AND '$to' ORDER BY date DESC";
+}	
 #for current month
 #$query="SELECT * FROM logsheet WHERE date between  DATE_FORMAT(CURDATE() ,'%Y-%m-01') AND CURDATE()";
 
@@ -69,7 +78,7 @@ $result=mysqli_query($conn,$query);
 					<table class="table table-dark table-bordered table-striped w-auto">
 						<caption class="text-success">Search Result</caption>
 						<tr>
-							<th>Date</th>
+							<th>Class taken</th>
 							<th>Name</th>
 							<th>Subjects</th>
 							<th>Topics</th>
@@ -112,5 +121,8 @@ $result=mysqli_query($conn,$query);
 }
 else{
 	
-}		
+}	
+}else{
+	header('location:index.php');
+}	
 ?>		

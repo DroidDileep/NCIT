@@ -29,6 +29,15 @@
   					<input type="text" class="form-control form-control-sm" placeholder="Teacher Name" name="tname">
   					</div>
   				</div>
+  				<div class="form-group ml-1 mr-2">
+					<input type="date" class="form-control-sm" id="fromdate" name="fromdate">
+				</div>
+				<div class="form-group">
+					<span>To</span>
+				</div>
+				<div class="form-group ml-2 mr-1">
+					<input type="date" class="form-control-sm" id="todate" name="todate">
+				</div>
 				<div class="input-group mr-2 col-sm-1">
 					<input type="submit" class="form-control form-control-sm btn-primary" name="submit" value="Search Logs">
 				</div>
@@ -46,13 +55,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 session_start();
 if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSION['idhod'])){
 
-	$name=$_POST['tname'];
+	$from=$_POST['fromdate'];
+	$to=$_POST['todate'];
+
 	require_once("connect.php");
+	if(!empty($_POST['tname'])){
+		#specific teacher's log
 
-	#get logs that are not approved and approved based on teachers name
-	$query="SELECT * FROM logsheet where tname='$name' and status!='archieved'";
+		$name=$_POST['tname'];
+		#get logs that are not approved and approved based on teachers name
+		$query="SELECT * FROM logsheet where tname='$name' and status!='archieved' and date between '$from' AND '$to' ORDER BY date DESC";
 
-	
+	}
+	else{
+		#everyone's log
+
+		$query="SELECT * FROM logsheet where status!='archieved' and date between '$from' AND '$to' ORDER BY date DESC";
+	}
 	
 #display the search result in tabular form. 
 	$result=mysqli_query($conn,$query);
@@ -60,9 +79,9 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 ?>		
 		<div id="logbox" class="m-4" style="line-height: 1">
 					<table class="table table-dark table-bordered table-striped w-auto">
-						<caption class="text-danger ">Logs:<?php echo $name ?></caption>
+						<caption class="text-danger ">Logs:<?php if(isset($name)){echo $name; } else{ echo "All"; }  ?></caption>
 						<tr>
-							<th>Date</th>
+							<th>Class taken</th>
 							<th>Name</th>
 							<th>ID</th>
 							<th>Subjects</th>

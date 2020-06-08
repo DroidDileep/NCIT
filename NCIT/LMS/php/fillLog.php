@@ -34,9 +34,9 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 			<h3 class="text-success">Provide the class details</h3>
 
 			<!-- form to collect log details of a particular day ;date,teacher id and teacher name obtained via session -->
-			<form class="form-inline" id="logform" method="POST">
+			<form class="form col-4" id="logform" method="POST">
 				<div class="form-group mr-2 col-xs-2">
-					<input type="date" class="form-control form-control-sm" size="9" name="date" >
+					<input type="date" class="form-control form-control-sm" size="9" name="date" id="date">
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<input type="text" class="form-control form-control-sm" size="9" name="tname" value="<?php echo $tname; ?>" readonly>
@@ -45,7 +45,21 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 					<input type="number" class="form-control form-control-sm" style="width: 7em" name="tid" value="<?php echo $tid ?>" readonly>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
-					<input type="text" class="form-control form-control-sm" name="subject" placeholder="Subject" required="">
+					<select class="form-control" name="subject" required>
+		<!-- php to get teachers name list from db-->
+								<?php
+									$query="SELECT subject FROM subjects WHERE t_id='$tid'";
+									$result=mysqli_query($conn,$query);
+									$numrows=mysqli_num_rows($result);
+									echo '<option value="-1" selected>Select Subject</option>';
+									if($numrows>0){
+										while($row=mysqli_fetch_assoc($result)){
+											echo "<option>".$row['subject']."</option>";
+										}
+
+									}
+								?>					 		
+							 	</select>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<input type="text" class="form-control form-control-sm" name="topics" placeholder="Topics" required>
@@ -64,13 +78,13 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 				</div>
 
 				<div class="form-group mr-2 col-xs-2">
-					<input type="text" class="form-control form-control-sm" name="time" placeholder="Time" style="width: 9em"required>
+					<input type="text" class="form-control form-control-sm" name="time" placeholder="Time" required>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
-					<input type="number" class="form-control form-control-sm" style="width: 7em" name="nop" placeholder="No.of Periods" required>
+					<input type="number" class="form-control form-control-sm"  name="nop" placeholder="No.of Periods" required>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
-					<input type="number" class="form-control form-control-sm" style="width: 7em" name="nos" placeholder="No.of Students">
+					<input type="number" class="form-control form-control-sm"  name="nos" placeholder="No.of Students">
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<input type="text" class="form-control form-control-sm" name="remarks" placeholder="Remarks Any">
