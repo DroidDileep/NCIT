@@ -59,6 +59,7 @@
 							<button type="button" class="btn btn-outline-primary c" id="viewlogs">View Logs</button>
 							<button type="button" class="btn btn-outline-primary c" id="editlogs">Edit Logs</button>
 							<button type="button" class="btn btn-outline-primary c" id="deletelogs">Archieve Logs</button>
+							<button type="button" class="btn btn-outline-primary " id="undodelete">Restore Archieves</button>
 							<button type="button" class="btn btn-outline-primary c" id="sortlogs">Sort Logs</button>
 							<button type="button" class="btn btn-outline-primary" id="addt">Add Teachers</button>
 							<button type="button" class="btn btn-outline-primary" id="removet">Remove Teachers</button> 	
@@ -90,6 +91,9 @@
 							//$("#rightcol").load("addteacher.php");
 							$("#dbox").attr('src', 'ArchieveLog.php');
 						});
+						$("#undodelete").click(function () {
+                            $("#dbox").attr('src','undoArchieve.php');
+                        });
 						$("#sortlogs").click(function() {
 							/* Act on the event, edit logs */
 							//$("#rightcol").load("addteacher.php");

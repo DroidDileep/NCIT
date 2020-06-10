@@ -83,9 +83,18 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="shift" class="col-4 col-form-label">Shift</label>
+							<label for="shift" class="col-4 col-form-label">Class Shift</label>
 							<div class="col-8">
-								<input class="form-control" type="text" name="shift" id="shift" readonly>
+                                <div class="col-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="shift" id="r1" value="Morning">
+                                        <label class="form-check-label" for="r1">Mor</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="shift" id="r2" value="Day">
+                                        <label class="form-check-label" for="r2">Day</label>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -138,7 +147,7 @@
 					success:function(data){
 						var datas=data.split('|');
 						$("#tid").val(datas[0]);
-						$("#shift").val(datas[1]);
+						//$("#shift").val(datas[1]);
 					}
 
 				});
