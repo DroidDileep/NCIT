@@ -9,9 +9,49 @@
 <html>
 <head>
 	<title>View Log Sheet</title>
+
+	<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	
 	<script src="https://kit.fontawesome.com/164b99a598.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+       function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+	</script>
+
 	<style type="text/css">
 		.search{
 			margin-top: 30px;
@@ -106,7 +146,7 @@
 		if($numrows>=1){
 ?>		
 				<div id="logbox" class="m-4" style="line-height: 1">
-							<table class="table table-dark table-bordered table-striped w-auto">
+							<table class="table table-dark table-bordered table-striped w-auto" id="tlogs">
 								<caption class="text-danger ">Logs-<?php echo $type ?></caption>
 								<tr>
 									<th>Class taken</th>
@@ -179,7 +219,7 @@
 								}
 ?>
 							</table>
-
+					<button onclick="exportTableToExcel('tlogs','tlogs')">Export Data to Excel</button>
 				</div> 
 <?php
 			}

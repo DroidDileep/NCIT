@@ -25,6 +25,12 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 			margin: auto;
 			margin-top: 10px;
 		}
+        #timebutton{
+            margin: 5px;
+        }
+        #time2{
+            display: none;
+        }
 	</style>
 </head>
 <body>
@@ -46,7 +52,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<select class="form-control" name="subject" required>
-		<!-- php to get teachers name list from db-->
+		<!-- php to get teachers subject list from db-->
 								<?php
 									$query="SELECT subject FROM subjects WHERE t_id='$tid'";
 									$result=mysqli_query($conn,$query);
@@ -58,7 +64,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 										}
 
 									}
-								?>					 		
+								?>
 							 	</select>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
@@ -78,7 +84,9 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 				</div>
 
 				<div class="form-group mr-2 col-xs-2">
-					<input type="text" class="form-control form-control-sm" name="time" placeholder="Time" required>
+					<input type="text" class="form-control form-control-sm" name="time[]" placeholder="Time1" required>
+                    <button id="timebutton" class="btn btn-secondary btn-sm">+Add another</button>
+                    <input type="text" class="form-control form-control-sm" name="time[]" id="time2" placeholder="Time2">
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<input type="number" class="form-control form-control-sm"  name="nop" placeholder="No.of Periods" required>
@@ -101,13 +109,13 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 				<div class="form-group mr-2 col-xs-2 mt-2">
 					<button class="btn-sm btn-primary" id="viewlogs">View My Logs</button>
 				</div>
-		
+
 		</div>
 		-->
-		<!--load here the indivial teacher log 
+		<!--load here the indivial teacher log
 		<div id="show_logs" class="justify-content-center" style="display: none">
 		</div>
-	
+
 	</div>
 	-->
 <!--	script to load teacher log in new div -->
@@ -115,18 +123,25 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 	<script type="text/javascript" >
 		$(document).ready(function(){
 
+		    //toggle visibility of second time slot
+
+            $("#timebutton").click(function () {
+                $("#time2").toggle('slow',function () {
+
+                });
+            });
 			/*
 			setInterval(function(){
 				$('#show_logs').load('viewtlogs.php');
-			
+
 			},1000);
 
 			//toggle visibility of logs view
-			
+
 			$("#viewlogs").click(function(){
 
 				$("#show_logs").toggle("slow");
-				
+
 			});
 			*/
 			$("#logform").submit(function(event){
@@ -143,7 +158,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
            			 }
 				});
 				 event.preventDefault();
-		
+
 			});
 
 		});

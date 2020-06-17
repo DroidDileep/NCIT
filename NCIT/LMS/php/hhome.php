@@ -6,7 +6,7 @@
 		$user=$_SESSION['userhod'];
 		$id=$_SESSION['idhod'];
 
-?>		
+?>
 		<!DOCTYPE html>
 		<html>
 		<head>
@@ -21,7 +21,7 @@
 			<style type="text/css">
 				#maindiv{
 					margin-top: 80px;
-					margin-left:20px; 
+					margin-left:20px;
 				}
 				button{
 					margin-bottom: 10px;
@@ -35,7 +35,7 @@
 					padding-left: 6px;
 					font-size: 14px;
 				}
-					 	
+
 			</style>
 
 		</head>
@@ -49,31 +49,31 @@
 		  				<div class="navbar-nav ml-auto">
 		            		<h4 class="text-dark">Welcome <?php echo $user?><a href="logout.php">log out</a></h4>
 		        		</div>
-		  				
+
 					</nav>
-				<!--dividing into 2 rows, one for available options and other one for displaying corresponding page-->	
+				<!--dividing into 2 rows, one for available options and other one for displaying corresponding page-->
 					<div class="row" id="maindiv">
 						<div class="col-2" id="leftcol">
 							<h3 class="text-success">Actions</h3>
 							<div class="btn-group btn-group-vertical">
-							<button type="button" class="btn btn-outline-primary c" id="viewlogs">View Logs</button>
-							<button type="button" class="btn btn-outline-primary c" id="editlogs">Edit Logs</button>
-							<button type="button" class="btn btn-outline-primary c" id="deletelogs">Archieve Logs</button>
-							<button type="button" class="btn btn-outline-primary " id="undodelete">Restore Archieves</button>
-							<button type="button" class="btn btn-outline-primary c" id="sortlogs">Sort Logs</button>
-							<button type="button" class="btn btn-outline-primary" id="addt">Add Teachers</button>
-							<button type="button" class="btn btn-outline-primary" id="removet">Remove Teachers</button> 	
-							<button type="button" class="btn btn-outline-primary" id="asub">Assign Subjects</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="viewlogs">View Logs</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="editlogs">Edit Logs</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="deletelogs">Archieve Logs</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="undodelete">Restore Archieves</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="sortlogs">Sort Logs</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="addt">Add Teachers</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="removet">Remove Teachers</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="asub">Assign Subjects</button>
 							</div>
 						</div>
-				<!-- iframe to display corresponding page on button click-->		
+				<!-- iframe to display corresponding page on button click-->
 						<div class="col-10" id="rightcol">
 							<iframe id="dbox" src="" height="500px" width="1000px"></iframe>
 						</div>
 
 					</div>
-					
-				<!-- script to change content of iframe on clicking specific button-->	
+
+				<!-- script to change content of iframe on clicking specific button-->
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$("#viewlogs").click(function() {
@@ -119,11 +119,11 @@
 
 		</body>
 		</html>
-<?php		
+<?php
 	}
 	else{
 		#unauthorized access
 		header('location: index.php ');
-	}	
+	}
 
 ?>

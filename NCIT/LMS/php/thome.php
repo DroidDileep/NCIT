@@ -6,7 +6,7 @@
 		$user=$_SESSION['usert'];
 		$id=$_SESSION['idt'];
 
-?>		
+?>
 		<!DOCTYPE html>
 		<html>
 		<head>
@@ -18,7 +18,7 @@
 			<style type="text/css">
 				#maindiv{
 					margin-top: 80px;
-					margin-left:20px; 
+					margin-left:20px;
 				}
 				button{
 					margin-bottom: 10px;
@@ -32,7 +32,7 @@
 					padding-left: 6px;
 					font-size: 14px;
 				}
-					 	
+
 			</style>
 
 		</head>
@@ -46,16 +46,16 @@
 		  				<div class="navbar-nav ml-auto">
 		            		<h4 class="text-dark">Welcome <?php echo $user?><a href="logout.php">log out</a></h4>
 		        		</div>
-		  				
+
 					</nav>
-				<!-- two columns one for displaying options as buttons and another one for displaying corresponding web page-->	
+				<!-- two columns one for displaying options as buttons and another one for displaying corresponding web page-->
 					<div class="row" id="maindiv">
 						<div class="col-2" id="leftcol">
 							<h3 class="text-success">Actions</h3>
 							<div class="btn-group btn-group-vertical">
-							<button type="button" class="btn btn-outline-primary c" id="filllogs">Fill Log</button>
-							<button type="button" class="btn btn-outline-primary c" id="viewlogs">View Log</button>
-							<button type="button" class="btn btn-outline-primary" id="deletelogs">Delete Log</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="filllogs">Fill Log</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="viewlogs">View Log</button>
+							<button type="button" class="btn btn-outline-primary btn-dark" id="deletelogs">Delete Log</button>
 							</div>
 						</div>
 						<div class="col-10" id="rightcol">
@@ -63,7 +63,7 @@
 						</div>
 
 					</div>
-			<!-- script to toggle content of iframe based on clicked button-->		
+			<!-- script to toggle content of iframe based on clicked button-->
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$("#filllogs").click(function() {
@@ -86,11 +86,11 @@
 
 		</body>
 		</html>
-<?php		
+<?php
 	}
 	else{
 		#unauthorized access
 		header('location: index.php ');
-	}	
+	}
 
 ?>

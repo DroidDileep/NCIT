@@ -7,6 +7,7 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
 </head>
 <body>
 
@@ -15,12 +16,12 @@
 <?php
 
 	require_once("connect.php");
-	$query="SELECT * FROM logsheet where teacher_id=201 and status='not approved' ";
+	$query="SELECT * FROM logsheet where teacher_id=501";
 	$result=mysqli_query($conn,$query);
 	if($result){
 ?>		
 		<div id="dbox" class="m-4" style="line-height: 1">
-					<table class="table table-dark table-bordered table-striped w-auto">
+					<table class="table table-dark table-bordered table-striped w-auto" id="testtable">
 						<tr>
 							<th>Date</th>
 							<th>Subjects</th>
@@ -58,7 +59,7 @@
 				}
 ?>
 					</table>
-
+					<button onclick="exportTableToExcel('testtable')">Export Table Data To Excel File</button>
 				</div> 
 <?php
 		}
@@ -90,6 +91,38 @@
     /*reload pg*/
 
 }
+
+       function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
 	
 
 
