@@ -19,11 +19,16 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	<style type="text/css">
-		#main,#viewlogsbox,#show_logs{
-			width:90%;
-			margin: auto;
+		body{
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+		}
+		#main{
+			width:30%;
 			margin-top: 10px;
+			float: left;
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
 		}
         #timebutton{
             margin: 5px;
@@ -31,20 +36,33 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
         #time2{
             display: none;
         }
+        input:hover{
+        	transform: scale(1.1);
+        	border-color: #0E6DEA ;
+        }
+        select:hover{
+        	transform: scale(1.1);
+        	border-color: #0E6DEA ;
+        }
+        .logimage{      	
+       
+        }
 	</style>
 </head>
 <body>
 
 	<div class="container-fluid">
 		<div class="justify-content-center" id="main">
-			<h3 class="text-success">Provide the class details</h3>
-
+			
+			<h3 class="text-success ml-5">Provide the class details</h3>
 			<!-- form to collect log details of a particular day ;date,teacher id and teacher name obtained via session -->
-			<form class="form col-4" id="logform" method="POST">
+			<form class="form col-9" id="logform" method="POST" style="padding: 2px;margin:auto">
+				
 				<div class="form-group mr-2 col-xs-2">
 					<input type="date" class="form-control form-control-sm" size="9" name="date" id="date">
 				</div>
 				<div class="form-group mr-2 col-xs-2">
+					
 					<input type="text" class="form-control form-control-sm" size="9" name="tname" value="<?php echo $tname; ?>" readonly>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
@@ -89,10 +107,10 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
                     <input type="text" class="form-control form-control-sm" name="time[]" id="time2" placeholder="Time2">
 				</div>
 				<div class="form-group mr-2 col-xs-2">
-					<input type="number" class="form-control form-control-sm"  name="nop" placeholder="No.of Periods" required>
+					<input type="number" min="1" max="5" class="form-control form-control-sm"  name="nop" placeholder="No.of Periods" required>
 				</div>
 				<div class="form-group mr-2 col-xs-2">
-					<input type="number" class="form-control form-control-sm"  name="nos" placeholder="No.of Students">
+					<input type="number" min="1" max="300" class="form-control form-control-sm"  name="nos" placeholder="No.of Students">
 				</div>
 				<div class="form-group mr-2 col-xs-2">
 					<input type="text" class="form-control form-control-sm" name="remarks" placeholder="Remarks Any">
@@ -103,6 +121,12 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 
 			</form>
 		</div>
+		<div id="rightdiv">
+			<div class="logimage">
+				<img src="../images/diaryfinal.png">
+			</div>
+		</div>
+	</div>	
 		<!--button to toggle teacher logs, currently not being used -->
 		<!--
 		<div class="justify-content-center" id="viewlogsbox">

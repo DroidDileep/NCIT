@@ -10,6 +10,9 @@
 		caption{
 			caption-side: top;
 		}
+		body{
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+		}
 	</style>
 </head>
 <body>

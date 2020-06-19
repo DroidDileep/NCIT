@@ -28,59 +28,127 @@ else{
   	
   </script>
   <script src="https://kit.fontawesome.com/164b99a598.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
   <style type="text/css">
+  	.navbar{
+  		background-color: #33BDFF;
+  	}
   	.center {
-  		width: 50%;
+  		width: 70%;
+  		border-radius: 25px;
   		margin: auto;
   		margin-top: 100px;
+  		border: 2px solid blue;
+  		background-color: #33BDFF;
+  		height: 400px;
   	}
   	#loginbox{
-  		width: 50%;
+  		width: 70%;
   		margin: auto;
   		margin-top: 50px;
+  		position: relative;
 
   	}
+  	#hloginbox{
+  		position: absolute;
+  		top:0;
+  	}
+  	#tloginbox,#hloginbox{
+  		display: none;
+  	}
+  	.sbtn:hover{
+  		transform: scale(1.3);
+  		border-color: red;
+  	}
+
   </style>
 </head>
 <body>
 	
 	<!-- header with logo and app name-->
 		<div class="navbar">
-			<nav class="navbar navbar-dark bg-primary fixed-top">
+			<nav class="navbar navbar-dark fixed-top">
   				<a class="navbar-brand" href="#">
     			<img src="../images/ncitlogo.png" width="40" height="40" class="d-inline-block align-top" alt="">
    				Log Management System
   				</a>
 			</nav>
 		</div>
-		
+		<div id="main">
 		<!-- buttons that can toggle login page for teacher and HOD -->
 			<div class="center text-center">
 				<h1 class="text-center text-dark"><span class="fas fa-user-tie"></span></h1>
 					
-					<div class="btn-group mt-3">
-						<button class="btn-light btn-outline-primary btn-lg mr-5" id="tbtn">Teacher</button>
-						<button class="btn-light btn-outline-primary btn-lg ml-5" id="hbtn">H O D</button>
+					<div class="btn-group mt-3" id="buttonsdiv">
+						<button class="btn-light btn-outline-primary btn-lg mr-5 sbtn" id="tbtn">Teacher</button>
+						<button class="btn-light btn-outline-primary btn-lg ml-5 sbtn" id="hbtn">H O D</button>
+					</div>
+					<div id="loginbox">
+						<div id="tloginbox">
+							<form class="form-inline" action="tloginprocess.php" method="POST">
+								<div class="input-group mb-2 mr-sm-2 ml-5">
+								    <div class="input-group-prepend">
+								    	<i class="zmdi zmdi-lock zmdi-hc-2x"></i>
+								      <div class="input-group-text ml-2">Teacher Id</div>
+								    </div>
+								    <input type="text" class="form-control" name="userid" style="width: 7em">
+							  	</div>
+							  	<div class="input-group mb-2 mr-sm-2 ml-4">
+								    <div class="input-group-prepend">
+								      	<div class="input-group-text">Password</div>
+								    </div>
+								   	<input type="password" class="form-control" name="userpass" style="width: 7em">
+								</div>
+							  	<button type="submit" class="btn btn-primary mb-2">Log In</button>
+							</form>
+						</div>
+
+						<div id="hloginbox">
+							<form class="form-inline" action="hloginprocess.php" method="POST">
+								  <div class="input-group mb-2 mr-sm-2 ml-5">
+								    <div class="input-group-prepend">
+								    	<i class="zmdi zmdi-lock zmdi-hc-2x"></i>
+								      <div class="input-group-text ml-2">Username</div>
+								    </div>
+								    <input type="text" class="form-control" name="userid" style="width: 7em">
+								  </div>
+								  <div class="input-group mb-2 mr-sm-2 ml-4">
+								    <div class="input-group-prepend">
+								      <div class="input-group-text">Password</div>
+								    </div>
+								    <input type="password" class="form-control" name="userpass" style="width: 7em">
+								  </div>
+								  <button type="submit" class="btn btn-primary mb-2">Log In</button>
+							</form>
+						</div>
+
 					</div>
 					
 			
 			</div>
-
-		<!-- div to display the corresponding loginpage for admin and teacher-->	
-		<div id="loginbox">
 
 		</div>
 
 		<!-- jquery code to facilitate button toggling-->
 		<script type="text/javascript">
 			$(document).ready(function() {
+				/*
 				$("#tbtn").click(function() {
-					/* Act on the event */
+					
 					$("#loginbox").load("tindex.php");
 				});
 				$("#hbtn").click(function() {
-					/* Act on the event */
+					
 					$("#loginbox").load("hindex.php");
+				});
+				*/
+				$("#tbtn").click(function(){
+					$("#tloginbox").toggle('slow');
+				
+				});
+				$("#hbtn").click(function(){
+					$("#hloginbox").toggle('slow');
+					 
 				});
 			});
 		</script>
