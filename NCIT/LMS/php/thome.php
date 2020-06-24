@@ -35,6 +35,7 @@
 			}
 			.btn:hover{
 				border: 2px solid blue;
+				transform: scale(1.1);
 
 			}
 				#leftcol{
@@ -48,6 +49,8 @@
 				}
 				.navbar{
 		  			background-color: #33BDFF;
+		  			font-family: bookman;
+		  			font-weight: bold;
 		  		}
 		  		i{
 		  			vertical-align: middle;
@@ -80,7 +83,7 @@
 							</div>
 						</div>
 						<div class="col-9" id="rightcol">
-							<iframe id="dbox" src="" height="500px" width="1200px"></iframe>
+							<iframe id="dbox"  src="frameindex.html" height="500px" width="1200px"></iframe>
 						</div>
 
 					</div>

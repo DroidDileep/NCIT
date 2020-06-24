@@ -22,6 +22,9 @@
 			
 			padding-left: 2px;
 		}
+		body{
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+		}
 
 	</style>
 </head>
@@ -93,6 +96,12 @@
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="shift" id="r2" value="Day">
                                         <label class="form-check-label" for="r2">Day</label>
+
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="shift" id="r3" value="Mor/Day">
+                                        <label class="form-check-label" for="r2">Both</label>
+                                        
                                     </div>
                                 </div>
 							</div>
@@ -126,7 +135,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-7">
+			<div class="col-8">
 				<div id="sublistbox">
 					
 				</div>

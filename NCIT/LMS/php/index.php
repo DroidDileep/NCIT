@@ -39,7 +39,7 @@ else{
   		margin: auto;
   		margin-top: 100px;
   		border: 2px solid blue;
-  		background-color: #33BDFF;
+  		background: linear-gradient(to top left, #33ccff 0%, #ccffff 100%);
   		height: 400px;
   	}
   	#loginbox{

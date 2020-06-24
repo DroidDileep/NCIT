@@ -16,8 +16,8 @@
   crossorigin="anonymous"></script>
   <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	
-	<script src="https://kit.fontawesome.com/164b99a598.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		
        function exportTableToExcel(tableID, filename = ''){
@@ -60,18 +60,54 @@
 		caption{
 			caption-side: top;
 		}
+		body{
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+		}
+		input{
+			border:none;
+			outline: none;
+		}
+		input:hover{
+			border-color: #117bc2;
+			transform: scale(1.1);
+		}
+		select:hover{
+			
+			transform: scale(1.1);
+		}
+		.zmdi-long-arrow-up{
+			vertical-align: middle;
+			animation: slide1 1s ease-in-out infinite;
+		}
+		@keyframes slide1 {
+		  0%,
+		  100% {
+		    transform: translate(0, 0);
+		  }
+
+		  50% {
+		    transform: translate(0, 10px);
+		  }
+		}
+		td{
+			 background-color: #6cbef5 !important;
+			 color:black;
+		}
+		tr{
+			background-color: #127ec7 !important;
+		}
 	</style>
 </head>
 <body>
 	<div class="search">
-		<h3>Search Logs</h3>
+		<h3><i class="zmdi zmdi-search-in-file"></i> Search Logs</h3>
 		<form method="post" action="#">
 	<!-- form to search log by teacher name -->		
 			<div class="form-row">
 				<div class="col-sm-2">
 					<div class="input-group">
   					<div class="input-group-prepend">
-    					<div class="input-group-text"><span class="fas fa-search"></span></div>
+    					<div class="input-group-text"><i class="zmdi zmdi-account"></i></div>
   					</div>
   					<input type="text" class="form-control form-control-sm" placeholder="Teacher Name" name="tname">
   					</div>
@@ -230,13 +266,15 @@
 			}
 	}		
 	else{
-		echo "error in post method!";
+?>		
+		<!--echo "error in post method!";-->
+		<h5 class="text-danger ml-4">Nothing to show here! Search something<i class="zmdi zmdi-long-arrow-up"></i></h5>
+<?php
 	}	
-
-
 }
 else{
-	echo "session error";
+?>	
+	<div class="alert-info">Session Error!</div>
+<?php	
 }
-
 ?>	

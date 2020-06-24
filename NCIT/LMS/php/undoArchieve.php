@@ -12,6 +12,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
         <script src="https://kit.fontawesome.com/164b99a598.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
         <style type="text/css">
             .search{
                 margin-top: 30px;
@@ -20,18 +21,29 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
             caption{
                 caption-side: top;
             }
+            body{
+                background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+            }
+            input{
+            border:none;
+            outline: none;
+            }
+            input:hover{
+                border-color: #117bc2;
+                transform: scale(1.1);
+            }
         </style>
     </head>
     <body>
     <div class="search">
-        <h3>Search Logs</h3>
+        <h3><i class="zmdi zmdi-search-in-file"></i> Search Logs</h3>
         <form method="post" action="#">
             <!-- form to search log by teacher name -->
             <div class="form-row">
                 <div class="col-sm-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><span class="fas fa-search"></span></div>
+                            <div class="input-group-text"><i class="zmdi zmdi-account"></i></div>
                         </div>
                         <input type="text" class="form-control form-control-sm" placeholder="Teacher Name" name="tname">
                     </div>

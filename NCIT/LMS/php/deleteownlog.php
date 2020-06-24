@@ -13,6 +13,13 @@
 		body{
 			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
 		}
+		td{
+			 background-color: #6cbef5 !important;
+			 color:black;
+		}
+		tr{
+			background-color: #127ec7 !important;
+		}
 	</style>
 </head>
 <body>

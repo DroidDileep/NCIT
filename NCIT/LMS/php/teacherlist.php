@@ -14,15 +14,24 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 	<title></title>
 	<style type="text/css">
 		th,td{
-			width: 20%;
+			width: 30%;
 			line-height: 40px;
+			border:1px dashed black;
 		}
+		td{
+			 background-color: #6cbef5 !important;
+			 color:black;
+		}
+		tr{
+			background-color: #127ec7 !important;
+		}
+		
 	</style>
 </head>
 <body>
 	<div class="col-8" id="listbox">
 		<h3 class="text-primary">Teachers</h3>
-		<table class="table-striped table-success table-bordered table-responsive-lg">
+		<table class="table-striped table-responsive-lg">
 			<tr>
 					<th style="width:5%">S.N</th>
 					<th>Name</th>
@@ -35,7 +44,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['userhod']) && isset($_SESSIO
 				
 				<tr>
 					<td style="width:5%"><?php echo $i; ?></td>
-					<td><?php echo $row['fname']; ?></td>
+					<td><?php echo $row['fname']." ".$row['lname']; ?></td>
 					<td><?php echo $row['id']; ?></td>
 				</tr>
 <?php 

@@ -21,6 +21,9 @@
 			border-right: 1px solid blue;
 			padding-right: 10px;
 		}
+		body{
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+		}
 	</style>
 	
 				

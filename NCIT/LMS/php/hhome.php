@@ -34,6 +34,8 @@
 
 				.navbar{
 		  			background-color: #33BDFF;
+		  			font-family: bookman;
+		  			font-weight: bold;
 		  		}
 		  		.btn{
 		  			font-size: 14pt;
@@ -88,7 +90,7 @@
 						</div>
 				<!-- iframe to display corresponding page on button click-->
 						<div class="col-10" id="rightcol">
-							<iframe id="dbox" src="" height="600px" width="1000px"></iframe>
+							<iframe id="dbox" src="frameindex.html" height="600px" width="1000px"></iframe>
 						</div>
 
 					</div>

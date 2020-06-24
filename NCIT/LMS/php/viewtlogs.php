@@ -10,6 +10,14 @@
 		body{
 			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
 		}
+		td{
+			 background-color: #6cbef5 !important;
+			 color:black;
+		}
+		tr{
+			background-color: #127ec7 !important;
+		}
+
 	</style>
 </head>
 <body>
@@ -35,9 +43,9 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['usert']) && isset($_SESSION[
 ?>		
 		<div id="lognotapprovedbox" class="m-4" style="line-height: 1">
 					<table class="table table-dark table-bordered table-striped w-auto">
-						<caption class="text-danger ">Logs Not Approved</caption>
+						<caption class="text-danger">Logs Not Approved</caption>
 						<tr>
-							<th>Date</th>
+							<th>Class taken</th>
 							<th>Subjects</th>
 							<th>Topics</th>
 							<th>Class Type</th>

@@ -8,23 +8,40 @@
 	<title></title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/164b99a598.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	<style type="text/css">
 		caption{
 			caption-side: top;
+		}
+		body{
+			background: linear-gradient(to right, #33bdff 0%, #ccffff 100%);
+			margin-left: 20px;
+			margin-top: 20px;
+		}
+		input{
+			border:none;
+			outline: none;
+		}
+		input:hover{
+			border-color: #117bc2;
+			transform: scale(1.1);
+		}
+		select:hover{
+			
+			transform: scale(1.1);
 		}
 	</style>
 </head>
 <body>
 	<div class="search">
-		<h3>Search Logs</h3>
+		<h3><i class="zmdi zmdi-search-in-file"></i> Search Logs</h3>
 <!-- form to search individual teachers log by using teachers first name -->
 		<form method="post" action="#">
 			<div class="form-row">
 				<div class="col-sm-2">
 					<div class="input-group">
   					<div class="input-group-prepend">
-    					<div class="input-group-text"><span class="fas fa-search"></span></div>
+    					<div class="input-group-text"><i class="zmdi zmdi-account"></i></div>
   					</div>
   					<input type="text" class="form-control form-control-sm" placeholder="Teacher Name" name="tname">
   					</div>
@@ -38,7 +55,7 @@
 				<div class="form-group ml-2 mr-1">
 					<input type="date" class="form-control-sm" id="todate" name="todate">
 				</div>
-				<div class="input-group mr-2 col-sm-1">
+				<div class="input-group mr-2 col-sm-2">
 					<input type="submit" class="form-control form-control-sm btn-primary" name="submit" value="Search Logs">
 				</div>
 
